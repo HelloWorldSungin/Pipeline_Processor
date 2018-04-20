@@ -1,0 +1,131 @@
+X:/ece154B/Pro1/Src/top.v {1 {vlog -work work -vopt X:/ece154B/Pro1/Src/top.v
+Model Technology ModelSim SE-64 vlog 10.1c Compiler 2012.07 Jul 27 2012
+-- Compiling module top
+
+Top level modules:
+	top
+
+} {} {}} X:/ece154B/Pro1/Src/controller.v {1 {vlog -work work -vopt X:/ece154B/Pro1/Src/controller.v
+Model Technology ModelSim SE-64 vlog 10.1c Compiler 2012.07 Jul 27 2012
+-- Compiling module controller
+
+Top level modules:
+	controller
+
+} {} {}} X:/ece154B/Pro1/Src/mips_pipeline.v {1 {vlog -work work -vopt X:/ece154B/Pro1/Src/mips_pipeline.v
+Model Technology ModelSim SE-64 vlog 10.1c Compiler 2012.07 Jul 27 2012
+-- Compiling module mips_pipeline
+
+Top level modules:
+	mips_pipeline
+
+} {} {}} X:/ece154B/Pro1/Src/ALUdec.v {1 {vlog -work work -vopt X:/ece154B/Pro1/Src/ALUdec.v
+Model Technology ModelSim SE-64 vlog 10.1c Compiler 2012.07 Jul 27 2012
+-- Compiling module ALUdec
+
+Top level modules:
+	ALUdec
+
+} {} {}} X:/ece154B/Pro1/Src/mult_tb.v {1 {vlog -work work -vopt X:/ece154B/Pro1/Src/mult_tb.v
+Model Technology ModelSim SE-64 vlog 10.1c Compiler 2012.07 Jul 27 2012
+-- Compiling module multiplier_tb
+
+Top level modules:
+	multiplier_tb
+
+} {} {}} X:/ece154B/Pro1/Src/maindec.v {1 {vlog -work work -vopt X:/ece154B/Pro1/Src/maindec.v
+Model Technology ModelSim SE-64 vlog 10.1c Compiler 2012.07 Jul 27 2012
+-- Compiling module maindec
+
+Top level modules:
+	maindec
+
+} {} {}} X:/ece154B/Pro1/Src/memory.v {1 {vlog -work work -vopt X:/ece154B/Pro1/Src/memory.v
+Model Technology ModelSim SE-64 vlog 10.1c Compiler 2012.07 Jul 27 2012
+-- Compiling module inst_memory
+-- Compiling module data_memory
+
+Top level modules:
+	inst_memory
+	data_memory
+
+} {} {}} X:/ece154B/Pro1/Src/hazard.v {1 {vlog -work work -vopt X:/ece154B/Pro1/Src/hazard.v
+Model Technology ModelSim SE-64 vlog 10.1c Compiler 2012.07 Jul 27 2012
+-- Compiling module hazard_detector
+
+Top level modules:
+	hazard_detector
+
+} {} {}} X:/ece154B/Pro1/Src/ALU.v {1 {vlog -work work -vopt X:/ece154B/Pro1/Src/ALU.v
+Model Technology ModelSim SE-64 vlog 10.1c Compiler 2012.07 Jul 27 2012
+-- Compiling module ALU
+
+Top level modules:
+	ALU
+
+} {} {}} X:/ece154B/Pro1/Src/ops.v {1 {vlog -work work -vopt X:/ece154B/Pro1/Src/ops.v
+Model Technology ModelSim SE-64 vlog 10.1c Compiler 2012.07 Jul 27 2012
+-- Compiling module adder
+-- Compiling module signext_16_32
+-- Compiling module zeroext_16_32
+-- Compiling module sll_2
+-- Compiling module sll_16
+-- Compiling module equals
+
+Top level modules:
+	adder
+	signext_16_32
+	zeroext_16_32
+	sll_2
+	sll_16
+	equals
+
+} {} {}} X:/ece154B/Pro1/Src/mux.v {1 {vlog -work work -vopt X:/ece154B/Pro1/Src/mux.v
+Model Technology ModelSim SE-64 vlog 10.1c Compiler 2012.07 Jul 27 2012
+-- Compiling module mux2
+-- Compiling module mux3
+-- Compiling module mux4
+
+Top level modules:
+	mux2
+	mux3
+	mux4
+
+} {} {}} X:/ece154B/Pro1/Src/mult.v {1 {vlog -work work -vopt X:/ece154B/Pro1/Src/mult.v
+Model Technology ModelSim SE-64 vlog 10.1c Compiler 2012.07 Jul 27 2012
+-- Compiling module multiplier
+-- Compiling module mult_controller
+-- Compiling module mult_datapath
+
+Top level modules:
+	multiplier
+
+} {} {}} X:/ece154B/Pro1/Src/datapath_tb.v {1 {vlog -work work -vopt X:/ece154B/Pro1/Src/datapath_tb.v
+Model Technology ModelSim SE-64 vlog 10.1c Compiler 2012.07 Jul 27 2012
+-- Compiling module old_datapath_tb
+
+Top level modules:
+	old_datapath_tb
+
+} {} {}} X:/ece154B/Pro1/Src/forward.v {1 {vlog -work work -vopt X:/ece154B/Pro1/Src/forward.v
+Model Technology ModelSim SE-64 vlog 10.1c Compiler 2012.07 Jul 27 2012
+-- Compiling module data_forward
+
+Top level modules:
+	data_forward
+
+} {} {}} X:/ece154B/Pro1/Src/hazard_unit.v {1 {vlog -work work -vopt X:/ece154B/Pro1/Src/hazard_unit.v
+Model Technology ModelSim SE-64 vlog 10.1c Compiler 2012.07 Jul 27 2012
+-- Compiling module hazard_unit
+
+Top level modules:
+	hazard_unit
+
+} {} {}} X:/ece154B/Pro1/Src/dp_tb.v {1 {vlog -work work -vopt X:/ece154B/Pro1/Src/dp_tb.v
+Model Technology ModelSim SE-64 vlog 10.1c Compiler 2012.07 Jul 27 2012
+-- Compiling module data_path_tb
+
+Top level modules:
+	data_path_tb
+
+} {} {}}

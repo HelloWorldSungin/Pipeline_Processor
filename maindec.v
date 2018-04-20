@@ -60,7 +60,7 @@ module maindec( input [5:0] OP, Func,
         6'b011001: controls   <=  16'b110xxx00000x1010; //MULTU
         default: controls     <=  16'b1101110000000000; //RType without MULT and MULTU
               endcase
-      6'b000010: controls     <=  16'b0xxxxx0x001xxx00; //JUMP
+      6'b000010: controls     <=  16'b0xxxxx01001xxx00; //JUMP
       6'b000100: controls     <=  16'b0x0xxx01100xxx00; //BEQ
       6'b000101: controls     <=  16'b0x0xxx01010xxx00; //BNE 
       6'b001000: controls     <=  16'b1010000000010000; //ADDI

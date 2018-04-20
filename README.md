@@ -1,2 +1,2 @@
-# Pipeline_Processor
+# Pipeline Processor
 This is implementation of pipeline processor for Verilog

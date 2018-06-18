@@ -1,0 +1,18 @@
+/*
+* RAW (read after write)
+*/
+AC080004 // sw $t0 0x04 $zero
+8C090004 // lw $t1 0x04 $zero
+01348020 // add $s0 $t1 $s4
+
+/*
+* WAW (write after write)
+*/
+8C020008 // lw $v0 0x08 $zero
+002C1020 // add $v0 $at $t4
+
+/*
+* WAR (write after read)
+*/
+ // sw
+ // add

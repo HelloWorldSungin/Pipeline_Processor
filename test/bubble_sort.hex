@@ -1,0 +1,79 @@
+//	
+//	BUBBLE SORT PROGRAM: 
+//
+//		$a0 = size of the array
+//		$t0 = base address of the array
+//		$t1 = index/counter for current position
+//		$s0 = swap flag
+//
+//		addi	$a0 	$zero	0x0008	
+//		addi	$t0		$zero	0x0000
+//		addi	$t1		$zero	0x0000
+//first:
+//		add		$t1		$t1		$t0
+//		addi	$t1		$t0		0x0000	
+//second:
+//		lw		$t2		0x0000	$t1		
+//		lw		$t3		0x0001	$t1
+//		slt		$t4		$t2		$t3
+//		addi	$t5		$zero	0x0001
+//		beq		$t4		$t5		noswap
+//		sw		$t2		0x0001	$t1
+//		sw		$t3		0x0000	$t1
+//		addi	$s0		$zero	0x0001
+//noswap:
+//		addi	$t1		$t1		0x0001
+//		bne		$t1		$a0		second
+//		bne		$s0		$zero	first
+//done:
+//		addi	$at		$zero	0xFFFF
+
+2004000A
+20080000
+20090000
+
+20100001//01284820
+21090000
+
+8D2A0000
+8D2B0001
+014B602A
+200D0001
+118D0003
+AD2A0001
+AD2B0000
+20100001
+
+21290001
+1524FFF6//1124FFF6
+1600FFF4
+2001FFFF
+
+
+//
+/*
+ADDI 1, 0, 12
+ADDI 2, 0, 10
+SB 1, 0, 0
+SB 2, 4, 0
+
+ADDI 2, 0, 2
+ADDI 8, 0, 0
+ADDI 9, 0, 0
+
+ADD 9, 9, 8
+ADDI 16, 0, 0
+
+LB 10, 0, 0
+LB 11, 4, 0
+SLT 12, 10, 11
+ADDI 13, 0, 1
+BEQ 12, 13, 3
+SB 10, 4, 9
+SB 11, 0, 9
+ADDI 16, 0, 1
+
+ADDI 9, 9, 1
+BNE 9, 2, -10
+BNE 16, 0, -13
+*/

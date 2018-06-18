@@ -1,0 +1,25 @@
+/*
+* RAW (read after write)
+*/
+20080007 // addi $t0 $zero 0x0007
+15090005 // bne $t0 $t1 0x0005
+02328020 // add $s0 $s1 $s2
+0270A022 // SUB $s4 $s3 $s0
+0208A820 // add $s5 $s0 $t0
+02305022 // sub $t2 $s1 $s0
+
+/*
+* WAW (write after write)
+*/
+01116020 // add $t4 $t0 $s1
+01386020 // add $t4 $t1 $t8
+00586022 // sub $t4 $v0 $t8
+03236022 // sub $t4 $t9 $v1
+01616020 // add $t4 $t3 $at
+
+/*
+* WAR (write after read)
+*/
+01AE1820 // add $v1 $t5 $t6
+01E26822 // sub $t5 $t7 $v0
+00297020 // add $t6 $at $t1

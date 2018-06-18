@@ -1,82 +1,103 @@
 
-/*
-module maindec( input [5:0] OP, Func,
-                input  Eq_ne,
-                output RegWrite, RegDst, ALUSrcA, MemWrite, MemRead, MemtoReg, beq, bne, jump, Se_ze, Start_mult, Mult_sign,
-                output [1:0] Out_select,
-                output [2:0] ALU_Mid);
- reg [15:0] controls;
- assign {RegWrite, RegDst, ALUSrcA, ALU_Mid, MemWrite, MemtoReg, 
-        beq, bne, jump, Se_ze, Out_select, Start_mult,Mult_sign} = controls;
+// Some notes for the control signals:
+// **beq, bne, jump** `MemtoReg` must be set to `0` not `x`, otherwise hazard
+// unit causes the fetch and decode pipeline registers to be disabled!
+// `RegDst` possibly similar sitution because it causes `WriteReg` to be `x`
+// and then it cannot be used by hazard detector! (RegDst is a maybe)
+module maindec (
+	op,
+	func,
+	eq_ne,
+	regwrite,
+	memtoreg,
+	memwrite,
+	memread,
+	regdst,
+	outselect,
+	alu_src,
+	alu_mid,
+	se_ze,
+	beq,
+	bne,
+	jump
+);
+//--Input Ports-------------------
+input [5:0] op, func;
+input eq_ne;
+//--Output Ports------------------
+output regwrite;
+output memtoreg;
+output memwrite;
+output memread;
+output [1:0] regdst;
+output [1:0] outselect;
+output alu_src;
+output [2:0] alu_mid;
+output se_ze;
+output beq;
+output bne;
+output jump;
+//--Instruction OPCODES-------
+parameter RTYPE = 0;
+parameter JUMP = 2;
+parameter BEQ = 4;
+parameter BNE = 5;
+parameter ADDI = 8;
+parameter ADDIU = 9;
+parameter SLTI = 10;
+parameter SLTIU = 11;
+parameter ANDI = 12;
+parameter ORI = 13;
+parameter XORI = 14;
+parameter LUI = 15;
+parameter MUL = 28;
+parameter LW = 35;
+parameter SW = 43;
+//--
+parameter MFHI = 6'b010000;
+parameter MFLO = 18;
+parameter MULT = 24;
+parameter MULTU = 25;
 
- 
-  always@(*) begin
-    case(OP)
-      6'b000000: case(Func)
-        6'b010000: controls   <=  16'b1100000000001100; //MFHI
-        6'b010010: controls   <=  16'b1100000000001000; //MFLO                         
-        6'b011000: controls   <=  16'b1100000000001011; //MULT
-        6'b011001: controls   <=  16'b1100000000001010; //MULTU
-        default: controls     <=  16'b1101110000000000; //RType without MULT and MULTU
-              endcase
-      6'b000010: controls     <=  16'b0000000000100000; //JUMP
-      6'b000100: controls     <=  16'b0000000010000000; //BEQ
-      6'b000101: controls     <=  16'b0000000001000000; //BNE 
-      6'b001000: controls     <=  16'b1010000000010000; //ADDI
-      6'b001001: controls     <=  16'b1010000000010000; //ADDIU
-      6'b001010: controls     <=  16'b1011010000010000; //SLTI
-      6'b001011: controls     <=  16'b1011010000010000; //SLTIU
-      6'b001100: controls     <=  16'b1010100000000000; //ANDI
-      6'b001101: controls     <=  16'b1010110000000000; //ORI
-      6'b001110: controls     <=  16'b1011000000000000; //0ORI
-      6'b001111: controls     <=  16'b1000000000000100; //LUI
-      6'b100011: controls     <=  16'b1010000100010000; //LW
-      6'b101011: controls     <=  16'b0010001000010000; //SW
-      default:   controls     <=  16'bxxxxxxxxxxxxxxxx; 
-    endcase 
-  end
-   assign MemRead = ~MemWrite;
-  
-endmodule
-*/
+reg [15:0] controls;
+assign {
+	regwrite, memtoreg, memwrite, memread,
+	regdst/*2b*/, outselect/*2b*/,
+	alu_src, alu_mid/*3b*/,
+	se_ze, beq, bne, jump
+} = controls;
 
+//--Asynchronous----------------
+always @ (*) begin
+	casex (op)
+		RTYPE:	controls <= 16'b1000_0100_0111_x000;
+/*		begin
+			casex (func)
+				MFHI:    controls <= 20'b1000_0111_xxxx_0010_x000;
+				MFLO:    controls <= 20'b1000_0110_xxxx_0001_x000;
+				MULT:    controls <= 20'b1000_1010_0xxx_1100_x000;
+				MULTU:   controls <= 20'b1000_1010_0xxx_1000_x000;
+				default: controls <= 16'b1000_0100_0111_x000;
+			endcase
+		end
+*/		JUMP:    controls <= 16'b0000_xxxx_xxxx_x001;
+		BEQ:     controls <= 16'b0000_0000_0000_0100;
+//		BNE:     controls <= 16'b0000_xxxx_0xxx_x010;
+		BNE:     controls <= 16'b0000_0000_0000_0010;
+		ADDI:    controls <= 16'b1000_0000_1000_1000;
+		ADDIU:   controls <= 16'b1000_0000_1000_1000;
+		SLTI:    controls <= 16'b1000_0000_1101_1000;
+		SLTIU:   controls <= 16'b1000_0000_1101_1000;
+		ANDI:    controls <= 16'b1000_0000_1010_0000;
+		ORI:     controls <= 16'b1000_0000_1011_0000;
+		XORI:    controls <= 16'b1000_0000_1100_0000;
+		LUI:     controls <= 16'b1000_0001_xxxx_x000;
+//		MUL:     controls <= 20'b1000_0110_0xxx_1100_x000;
+		LW:      controls <= 16'b1101_0000_1000_1000;
+		SW:      controls <= 16'b0010_xx00_1000_1000;
+		default: controls <= 16'b0000_0000_0000_0000;
+	endcase
+end
 
-module maindec( input [5:0] OP, Func,
-                input  Eq_ne,
-                output RegWrite, RegDst, ALUSrcA, MemWrite, MemRead, MemtoReg, beq, bne, jump, Se_ze, Start_mult, Mult_sign,
-                output [1:0] Out_select,
-                output [2:0] ALU_Mid);
- reg [15:0] controls;
- assign {RegWrite, RegDst, ALUSrcA, ALU_Mid, MemWrite, MemtoReg, 
-        beq, bne, jump, Se_ze, Out_select, Start_mult,Mult_sign} = controls;
-
- 
-  always@(*) begin
-    casex(OP)
-      6'b000000: casex(Func)
-        6'b010000: controls   <=  16'b11xxxx0000001100; //MFHI
-        6'b010010: controls   <=  16'b11xxxx0000001000; //MFLO                         
-        6'b011000: controls   <=  16'b110xxx00000x1011; //MULT
-        6'b011001: controls   <=  16'b110xxx00000x1010; //MULTU
-        default: controls     <=  16'b1101110000000000; //RType without MULT and MULTU
-              endcase
-      6'b000010: controls     <=  16'b0xxxxx01001xxx00; //JUMP
-      6'b000100: controls     <=  16'b0x0xxx01100xxx00; //BEQ
-      6'b000101: controls     <=  16'b0x0xxx01010xxx00; //BNE 
-      6'b001000: controls     <=  16'b1010000000010000; //ADDI
-      6'b001001: controls     <=  16'b1010000000010000; //ADDIU
-      6'b001010: controls     <=  16'b1011010000010000; //SLTI
-      6'b001011: controls     <=  16'b1011010000010000; //SLTIU
-      6'b001100: controls     <=  16'b1010100000000000; //ANDI
-      6'b001101: controls     <=  16'b1010110000000000; //ORI
-      6'b001110: controls     <=  16'b1011000000000000; //XORI
-      6'b001111: controls     <=  16'b10xxxx00000x0100; //LUI
-      6'b100011: controls     <=  16'b1010000000010000; //LW
-      6'b101011: controls     <=  16'b0x10001x00010000; //SW
-      default:   controls     <=  16'bxxxxxxxxxxxxxxxx; 
-    endcase 
-  end
-   assign MemRead = ~MemWrite;
-  
 endmodule
 

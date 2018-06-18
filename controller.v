@@ -6,25 +6,65 @@
 /*
  * ALU_Op: Control signal to select ALU operation
  */
-module controller(	input [5:0]		OP, Func,
-					input			Eq_ne,
-					output [1:0]	PC_source, Out_select,
-					output			MemWrite, MemRead, RegWrite, Output_branch, ALUSrcA,
-					output [3:0]	ALU_Op,
-					output			Se_ze, RegDst, Start_mult, Mult_sign, MemtoReg);
 
-wire jump;
-wire Reset;
-wire beq, bne;
+/*
+* Not including `output_branch` but its the same as pcsrc[0]
+*/
+module controller (
+	op, func, eq_ne,
+	pcsrc, se_ze, outputbranch,
+	regwrite, regdst,
+	aluctrl, alusrc, outselect,	
+	memtoreg, memread, memwrite
+);
+//--Input Ports---------------------------------------------------------------
+input [5:0] op, func;
+input eq_ne;
+//--Output Ports----------
+output [1:0] pcsrc;
+output regwrite;
+output memtoreg, memread, memwrite;
+//output regdst;
+output [1:0] regdst;
+output [1:0] outselect;
+output [3:0] aluctrl;
+output alusrc;
+output se_ze;
+output outputbranch;
+//--Internal Wires---------
+wire branch_taken, beq, bne, jump;
 wire [2:0] ALU_Mid;
 
+//--Wire Assignments---------
+assign outputbranch = beq | bne;
+assign branch_taken = (beq & eq_ne) ^ (~eq_ne & bne);
+assign pcsrc = {jump, branch_taken};
+//--Submodules--------------
 
-maindec md(OP, Func, Eq_ne, RegWrite, RegDst, ALUSrcA, MemWrite, MemRead, MemtoReg, beq, bne,
-             jump, Se_ze, Start_mult, Mult_sign, Out_select, ALU_Mid);
+maindec main_decoder (
+	.op(op),
+	.func(func),
+	.eq_ne(eq_ne),
+	.regwrite(regwrite),
+	.memtoreg(memtoreg),
+	.memwrite(memwrite),
+	.memread(memread),
+	.regdst(regdst),
+	.outselect(outselect),
+	.alu_src(alusrc),
+	.alu_mid(ALU_Mid),
+	.se_ze(se_ze),
+	.beq(beq),
+	.bne(bne),
+	.jump(jump)
+);
 
-ALUdec ad(Func, ALU_Mid, ALU_Op);
+ALUdec alu_decoder (
+	.Func(func),
+	.ALU_Mid(ALU_Mid),
+	.ALU_Op(aluctrl)
+);
 
-assign Output_branch = (beq & Eq_ne)^ (~Eq_ne & bne);
-assign PC_source = {jump, Output_branch};
 
 endmodule
+

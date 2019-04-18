@@ -1,6 +1,8 @@
 # Log the simulation results into the transcript
 transcript file run_units_msim_transcript
 
+vsim
+
 radix hex
 
 # Setting when running on Modelsim GUI

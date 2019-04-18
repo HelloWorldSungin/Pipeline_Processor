@@ -4,7 +4,7 @@ transcript file run_units_msim_transcript
 radix hex
 
 # Setting when running on Modelsim GUI
-if {argc == 1} {
+if {$argc == 1} {
   # Setup cloumn widths, etc. for wave window
   #Layout suppresstype list
   #view - undock objects

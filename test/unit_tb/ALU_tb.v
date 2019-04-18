@@ -91,7 +91,6 @@ initial begin
   ALUout_expected= 32'd0;
 
   donesim = 1'b1;
-  $stop;
 end
 
 endmodule

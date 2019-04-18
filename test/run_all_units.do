@@ -1,7 +1,7 @@
 # Log the simulation results into the transcript
 transcript file run_units_msim_transcript
 
-vsim -L unisims_ver
+vsim system glbl ALU_tb
 
 radix hex
 

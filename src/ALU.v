@@ -15,11 +15,11 @@ module ALU (
   input wire [31:0] In1,
   input wire [31:0] In2,
   input wire [3:0] Func,
-  output reg [31:0] ALUout
+  output wire [31:0] ALUout
   );
 
   // Declare Wires used in this Module
-  wire [31:0] update_In2;
+  wire [31:0] updated_In2;
   wire [31:0] sum;
   wire cout, cin, overflow, zero;
 

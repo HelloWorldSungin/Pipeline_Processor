@@ -2,4 +2,4 @@
 
 rm -f compile_units_msim_transcript
 
-vsim -do compile_units_auto.do
+vsim -c -do compile_units_auto.do

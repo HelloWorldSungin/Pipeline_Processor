@@ -78,7 +78,7 @@ initial begin
   // ADD
   #10
   Func = 4'b0100;
-  ALUout_expected = 32'd8;
+  ALUout_expected = 32'd16;
 
   // SUB
   #10

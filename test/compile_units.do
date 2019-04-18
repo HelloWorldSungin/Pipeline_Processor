@@ -2,7 +2,7 @@
 transcript file compile_units_msim_transcript
 
 # Kill off any exisiting simulation window
-quie -sim
+quit -sim -sim
 
 # Nuke any exisiting contents of Verilog work/ subdir.
 if {[file exists rtl_work]} {

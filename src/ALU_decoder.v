@@ -28,7 +28,7 @@ module ALU_decoder(
                 (control_unit_funct == 6'b100110) ? 4'b0010 :           //          xor
                 (control_unit_funct == 6'b001100) ? 4'b0011 :           //          xnor, 001100 is originally systemcall, but we use it for xnor here
                 (control_unit_funct == 6'b101010) ? 4'b1101 :           //          slt
-                (control_unit_funct == 6'b101011) ? 4'b1101 : 4'bXXXX   //          sltu
+                (control_unit_funct == 6'b101011) ? 4'b1101 : 4'bXXXX;  //          sltu
 
 endmodule
 `default_nettype wire

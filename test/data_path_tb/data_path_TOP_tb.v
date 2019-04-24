@@ -9,18 +9,18 @@ reg          reset;
 // reg [31:0]   pc;
 //reg [31:0]   instr_d;
 //reg [31:0]   readdata_m;
-reg          start_mult;
-reg          mult_sign;
-reg [1:0]    pcsrc;
-reg          se_ze;
-reg          regwrite_d;
-reg          regdst_d;
-reg          alusrc_d;
-reg [3:0]    aluctrl_d;
-reg [1:0]    outselect_d;
-reg          memwrite_d;
-reg          memtoreg_d;
-reg          output_branch;
+wire          start_mult;
+wire          mult_sign;
+wire [1:0]    pcsrc;
+wire          se_ze;
+wire          regwrite_d;
+wire          regdst_d;
+wire          alusrc_d;
+wire [3:0]    aluctrl_d;
+wire [1:0]    outselect_d;
+wire          memwrite_d;
+wire          memtoreg_d;
+wire          output_branch;
 
 //--Output--------------------------
 wire         eq_ne;
@@ -36,6 +36,20 @@ reg [16:0]   controller_simulator;
 reg          eq_ne_expected;
 reg [5:0]    op_code_expected;
 reg [5:0]    control_unit_funct_expected;
+
+assign {regwrite_d,         // 16
+        regdst_d,           // 15
+        alusrc_d,           // 14
+        aluctrl_d,          // 10:13
+        memwrite_d,         // 9
+        memtoreg_d,         // 8
+        se_ze,              // 7
+        outselect_d,        // 5:6
+        start_mult,         // 4
+        mult_sign,          // 3
+        output_branch,      // 2
+        pcsrc               // 0:1
+        } = controller_simulator;
 
 // initialize data_path_TOP_tb module
 data_path_TOP data_path_TOP_init (
@@ -154,7 +168,6 @@ data_path_TOP data_path_TOP_init (
     reset   <= 1'b0;
     #5;
     controller_simulator <= 17'b11001000000000000; // ADD
-    {regwrite_d, regdst_d, alusrc_d, aluctrl_d, memwrite_d, memtoreg_d, se_ze, outselect_d, start_mult, mult_sign, output_branch, pcsrc} <= controller_simulator;
     #30;
     donesim <= 1'b1;
   end

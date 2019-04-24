@@ -14,7 +14,7 @@ vlib rtl_work
 vmap work rtl_work
 
 # Compile all unit source files
-vlog -f memory_src.f
+vlog -f inst_memory_src.f
 
 # Compile all unit testbench and simulation-only Verilog files
-vlog -vlog01compat inst_memory.v
+vlog -vlog01compat -f inst_memory_src_tb.f

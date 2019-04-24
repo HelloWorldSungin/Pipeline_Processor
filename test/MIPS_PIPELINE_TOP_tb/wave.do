@@ -36,11 +36,11 @@ add wave -noupdate -group multiplier /MIPS_PIPELINE_TOP_tb/MIPS_PIPELINE_TOP_ini
 add wave -noupdate -group multiplier /MIPS_PIPELINE_TOP_tb/MIPS_PIPELINE_TOP_init/data_path_TOP/mult_done
 add wave -noupdate -group multiplier /MIPS_PIPELINE_TOP_tb/MIPS_PIPELINE_TOP_init/data_path_TOP/product
 add wave -noupdate -divider {Pre-Fetch Stage}
-add wave -noupdate -group pcnext_mux /MIPS_PIPELINE_TOP_tb/MIPS_PIPELINE_TOP_init/data_path_TOP/pcsrc
-add wave -noupdate -group pcnext_mux /MIPS_PIPELINE_TOP_tb/MIPS_PIPELINE_TOP_init/data_path_TOP/pcjump_d
-add wave -noupdate -group pcnext_mux /MIPS_PIPELINE_TOP_tb/MIPS_PIPELINE_TOP_init/data_path_TOP/pcnext
-add wave -noupdate -group pcnext_mux /MIPS_PIPELINE_TOP_tb/MIPS_PIPELINE_TOP_init/data_path_TOP/pcbranch_d
-add wave -noupdate -group pcnext_mux /MIPS_PIPELINE_TOP_tb/MIPS_PIPELINE_TOP_init/data_path_TOP/pcplus4_f
+add wave -noupdate -expand -group pcnext_mux /MIPS_PIPELINE_TOP_tb/MIPS_PIPELINE_TOP_init/data_path_TOP/pcsrc
+add wave -noupdate -expand -group pcnext_mux /MIPS_PIPELINE_TOP_tb/MIPS_PIPELINE_TOP_init/data_path_TOP/pcjump_d
+add wave -noupdate -expand -group pcnext_mux /MIPS_PIPELINE_TOP_tb/MIPS_PIPELINE_TOP_init/data_path_TOP/pcnext
+add wave -noupdate -expand -group pcnext_mux /MIPS_PIPELINE_TOP_tb/MIPS_PIPELINE_TOP_init/data_path_TOP/pcbranch_d
+add wave -noupdate -expand -group pcnext_mux /MIPS_PIPELINE_TOP_tb/MIPS_PIPELINE_TOP_init/data_path_TOP/pcplus4_f
 add wave -noupdate -group fetch_register /MIPS_PIPELINE_TOP_tb/MIPS_PIPELINE_TOP_init/data_path_TOP/fetch_register/enable
 add wave -noupdate -group fetch_register -radix decimal /MIPS_PIPELINE_TOP_tb/MIPS_PIPELINE_TOP_init/data_path_TOP/fetch_register/pc_d
 add wave -noupdate -group fetch_register -radix decimal /MIPS_PIPELINE_TOP_tb/MIPS_PIPELINE_TOP_init/data_path_TOP/fetch_register/pc_next_f
@@ -79,6 +79,9 @@ add wave -noupdate -group equal_comparator /MIPS_PIPELINE_TOP_tb/MIPS_PIPELINE_T
 add wave -noupdate -group equal_comparator /MIPS_PIPELINE_TOP_tb/MIPS_PIPELINE_TOP_init/data_path_TOP/eq_ne
 add wave -noupdate -group signnext_16_32 /MIPS_PIPELINE_TOP_tb/MIPS_PIPELINE_TOP_init/data_path_TOP/instr_d
 add wave -noupdate -group signnext_16_32 /MIPS_PIPELINE_TOP_tb/MIPS_PIPELINE_TOP_init/data_path_TOP/signimm_d
+add wave -noupdate -group brach_target_addr(bta) /MIPS_PIPELINE_TOP_tb/MIPS_PIPELINE_TOP_init/data_path_TOP/branch_offset
+add wave -noupdate -group brach_target_addr(bta) /MIPS_PIPELINE_TOP_tb/MIPS_PIPELINE_TOP_init/data_path_TOP/pcplus4_d
+add wave -noupdate -group brach_target_addr(bta) /MIPS_PIPELINE_TOP_tb/MIPS_PIPELINE_TOP_init/data_path_TOP/pcbranch_d
 add wave -noupdate -group jump_offset_calculate /MIPS_PIPELINE_TOP_tb/MIPS_PIPELINE_TOP_init/data_path_TOP/instr_d
 add wave -noupdate -group jump_offset_calculate /MIPS_PIPELINE_TOP_tb/MIPS_PIPELINE_TOP_init/data_path_TOP/jump_offset
 add wave -noupdate -group jump_targe_addr(jta) /MIPS_PIPELINE_TOP_tb/MIPS_PIPELINE_TOP_init/data_path_TOP/instr_d
@@ -155,18 +158,18 @@ add wave -noupdate -group memory_register /MIPS_PIPELINE_TOP_tb/MIPS_PIPELINE_TO
 add wave -noupdate -group memory_register /MIPS_PIPELINE_TOP_tb/MIPS_PIPELINE_TOP_init/data_path_TOP/memory_register/writereg_e
 add wave -noupdate -group memory_register /MIPS_PIPELINE_TOP_tb/MIPS_PIPELINE_TOP_init/data_path_TOP/memory_register/writereg_m
 add wave -noupdate -divider {Memory Stage}
-add wave -noupdate -expand -group data_memory /MIPS_PIPELINE_TOP_tb/MIPS_PIPELINE_TOP_init/data_path_TOP/clk
-add wave -noupdate -expand -group data_memory /MIPS_PIPELINE_TOP_tb/MIPS_PIPELINE_TOP_init/data_path_TOP/memwrite_m
-add wave -noupdate -expand -group data_memory -radix decimal /MIPS_PIPELINE_TOP_tb/MIPS_PIPELINE_TOP_init/data_path_TOP/aluout_m
-add wave -noupdate -expand -group data_memory -radix decimal /MIPS_PIPELINE_TOP_tb/MIPS_PIPELINE_TOP_init/data_path_TOP/writedata_m
-add wave -noupdate -expand -group data_memory -radix decimal /MIPS_PIPELINE_TOP_tb/MIPS_PIPELINE_TOP_init/data_path_TOP/readdata_m
+add wave -noupdate -group data_memory /MIPS_PIPELINE_TOP_tb/MIPS_PIPELINE_TOP_init/data_path_TOP/clk
+add wave -noupdate -group data_memory /MIPS_PIPELINE_TOP_tb/MIPS_PIPELINE_TOP_init/data_path_TOP/memwrite_m
+add wave -noupdate -group data_memory -radix decimal /MIPS_PIPELINE_TOP_tb/MIPS_PIPELINE_TOP_init/data_path_TOP/aluout_m
+add wave -noupdate -group data_memory -radix decimal /MIPS_PIPELINE_TOP_tb/MIPS_PIPELINE_TOP_init/data_path_TOP/writedata_m
+add wave -noupdate -group data_memory -radix decimal /MIPS_PIPELINE_TOP_tb/MIPS_PIPELINE_TOP_init/data_path_TOP/readdata_m
 add wave -noupdate -divider {Writeback Stage}
 add wave -noupdate -expand -group {final_result mux} /MIPS_PIPELINE_TOP_tb/MIPS_PIPELINE_TOP_init/data_path_TOP/memtoreg_w
 add wave -noupdate -expand -group {final_result mux} -radix decimal /MIPS_PIPELINE_TOP_tb/MIPS_PIPELINE_TOP_init/data_path_TOP/readdata_w
 add wave -noupdate -expand -group {final_result mux} -radix decimal /MIPS_PIPELINE_TOP_tb/MIPS_PIPELINE_TOP_init/data_path_TOP/aluout_w
 add wave -noupdate -expand -group {final_result mux} -radix decimal /MIPS_PIPELINE_TOP_tb/MIPS_PIPELINE_TOP_init/data_path_TOP/result_w
 TreeUpdate [SetDefaultTree]
-WaveRestoreCursors {{Cursor 1} {16 ns} 0}
+WaveRestoreCursors {{Cursor 1} {2750 ns} 0}
 quietly wave cursor active 1
 configure wave -namecolwidth 150
 configure wave -valuecolwidth 100
@@ -182,4 +185,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits ns
 update
-WaveRestoreZoom {0 ns} {105 ns}
+WaveRestoreZoom {38 ns} {67 ns}

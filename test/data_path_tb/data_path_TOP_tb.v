@@ -166,7 +166,7 @@ data_path_TOP data_path_TOP_init (
     reset   <= 1'b1;
     #16;
     reset   <= 1'b0;
-    #5;
+    #9;
     controller_simulator <= 17'b11001000000000000; // ADD
     #30;
     donesim <= 1'b1;

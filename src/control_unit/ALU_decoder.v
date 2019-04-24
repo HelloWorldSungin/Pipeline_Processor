@@ -6,7 +6,7 @@
     ALU_mid: 6 bits funct select Itype for ALU operation
 */
 
-`default_nettype nettype none
+`default_nettype none
 module ALU_decoder(
   input wire [5:0] control_unit_funct,
   input wire [2:0] ALU_mid,

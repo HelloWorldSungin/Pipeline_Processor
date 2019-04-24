@@ -67,20 +67,20 @@ assign controls = (op_code == 6'b000000) ? ((control_unit_funct == 6'b000000) ? 
                                             (control_unit_funct == 6'b011000) ? 16'b000xxx00000x1011 :        // MULT
                                             (control_unit_funct == 6'b011001) ? 16'b110xxx00000x1010 :        // MULTU
                                                                                 16'b1101110000000000) :       // RType without MULT and MULTU
-                   (op_code == 6'b000010) ? 16'b000xxx01001xxx00 :              // JUMP
-                   (op_code == 6'b000100) ? 16'b000xxx01100xxx00 :              // BEQ
-                   (op_code == 6'b000101) ? 16'b000xxx01010xxx00 :              // BNE
-                   (op_code == 6'b001000) ? 16'b1010000000010000 :              // ADDI
-                   (op_code == 6'b001001) ? 16'b1010000000010000 :              // ADDIU
-                   (op_code == 6'b001010) ? 16'b1011010000010000 :              // SLTI
-                   (op_code == 6'b001011) ? 16'b1011010000010000 :              // SLTIU
-                   (op_code == 6'b001100) ? 16'b1010100000000000 :              // ANDI
-                   (op_code == 6'b001101) ? 16'b1010110000000000 :              // ORI
-                   (op_code == 6'b001110) ? 16'b1011000000000000 :              // XORI
-                   (op_code == 6'b001111) ? 16'b10xxxx00000x0100 :              // LUI
-                   (op_code == 6'b100011) ? 16'b1010000000010000 :              // LW
-                   (op_code == 6'b101011) ? 16'b0x10001x00010000 :              // SW
-                                            16'bxxxxxxxxxxxxxxxx;
+                                                                                (op_code == 6'b000010) ? 16'b000xxx01001xxx00 :              // JUMP
+                                                                                (op_code == 6'b000100) ? 16'b000xxx01100xxx00 :              // BEQ
+                                                                                (op_code == 6'b000101) ? 16'b000xxx01010xxx00 :              // BNE
+                                                                                (op_code == 6'b001000) ? 16'b1010000000010000 :              // ADDI
+                                                                                (op_code == 6'b001001) ? 16'b1010000000010000 :              // ADDIU
+                                                                                (op_code == 6'b001010) ? 16'b1011010000010000 :              // SLTI
+                                                                                (op_code == 6'b001011) ? 16'b1011010000010000 :              // SLTIU
+                                                                                (op_code == 6'b001100) ? 16'b1010100000000000 :              // ANDI
+                                                                                (op_code == 6'b001101) ? 16'b1010110000000000 :              // ORI
+                                                                                (op_code == 6'b001110) ? 16'b1011000000000000 :              // XORI
+                                                                                (op_code == 6'b001111) ? 16'b10xxxx00000x0100 :              // LUI
+                                                                                (op_code == 6'b100011) ? 16'b1010000000010000 :              // LW
+                                                                                (op_code == 6'b101011) ? 16'b0x10001x00010000 :              // SW
+                                                                                16'bxxxxxxxxxxxxxxxx;
 
 
 

@@ -46,8 +46,8 @@ module reg_file(
   always @ (posedge clk, posedge reset) begin
     if (reset) begin
       // setting synchronnous reset at positive clk edge
-      RD1 <= 32'd0;
-      RD2 <= 32'd0;
+      RD1_r <= 32'd0;
+      RD2_r <= 32'd0;
     end
     else if (write) begin
       //write to the memory if write = 1, Reset = 0, and on a raising edge of the clock

@@ -19,5 +19,8 @@ vlog -f control_unit_src.f
 # Compile all data_path files
 vlog -f data_path_src.f
 
+# Compile MIPS_PIPELINE_TOP vile
+vlog ../../src/MIPS_PIPELINE_TOP.v
+
 # Compile all unit testbench and simulation-only Verilog files
 vlog -vlog01compat MIPS_PIPELINE_TOP_tb.v

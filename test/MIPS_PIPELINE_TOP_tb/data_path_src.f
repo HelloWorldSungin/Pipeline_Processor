@@ -1,0 +1,12 @@
+../../src/data_path/units/ALU.v
+../../src/data_path/units/hazard_unit.v
+../../src/data_path/units/reg_file.v
+../../src/data_path/stage_registers/fetch_register.v
+../../src/data_path/stage_registers/decode_register.v
+../../src/data_path/stage_registers/execute_register.v
+../../src/data_path/stage_registers/memory_register.v
+../../src/data_path/stage_registers/writeback_register.v
+../../src/data_path/memory/data_memory.v
+../../src/data_path/memory/inst_memory.v
+../../src/data_path/multiplier.v
+../../src/data_path/data_path_TOP.v

@@ -1,5 +1,5 @@
 # Log the simulation results into the transcript
-transcript file run_units_msim_transcript
+transcript file run_units_msim_ALU_tb_transcript
 
 vsim ALU_tb
 

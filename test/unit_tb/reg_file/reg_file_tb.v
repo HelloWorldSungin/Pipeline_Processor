@@ -98,7 +98,7 @@ initial begin
   @(negedge clk)
   RD1_expected <= 32'd10;
   RD2_expected <= 32'd12;
-  #5
+  #2.5
   //On the same clock cycle as above comment (Write <= 0), it writes rf_mem[20] to 1 on the raising edge
   write <= 1'b1;
   WD <= 32'd20;

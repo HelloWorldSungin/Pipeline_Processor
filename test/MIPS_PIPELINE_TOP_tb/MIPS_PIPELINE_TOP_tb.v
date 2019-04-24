@@ -27,7 +27,10 @@ MIPS_PIPELINE_TOP MIPS_PIPELINE_TOP_init (
   end
 
   initial begin
-    donesim = 1'b0;
+    donesim <= 1'b0;
+    reset <= 1'b1;
+    #16;
+    reset <= 1'b0;
     #400;
     donesim = 1'b1;
   end

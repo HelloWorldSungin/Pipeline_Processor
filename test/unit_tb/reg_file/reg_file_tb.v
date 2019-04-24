@@ -105,8 +105,9 @@ initial begin
   PR1 <= 5'd1;
   RD1_expected <= 32'd20;
   #10;
-  donesim <= 1'b1
+  donesim <= 1'b1;
 end
 
+endmodule
 
 `default_nettype wire

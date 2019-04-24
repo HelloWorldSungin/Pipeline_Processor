@@ -4,9 +4,9 @@
 module control_unit_TOP_tb();
 
 //--Inputs--------------------------
-wire [5:0]  op_code;
-wire [5:0]  control_unit_funct;
-wire        eq_ne;
+reg [5:0]  op_code;
+reg [5:0]  control_unit_funct;
+reg        eq_ne;
 
 //--Output--------------------------
 wire [1:0]  pc_source;

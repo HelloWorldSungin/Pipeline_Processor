@@ -3,7 +3,7 @@
  */
 
 `default_nettype none
-
+`timescale 1 ns / 1 ns
 module hazard_unit (
   input wire [4:0]    rs_d,
   input wire [4:0]    rt_d,

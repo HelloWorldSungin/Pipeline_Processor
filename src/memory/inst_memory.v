@@ -14,7 +14,7 @@ module inst_memory (
   assign read_data = inst_mem_RAM[address[31:2]];
 
   initial begin
-    $readmemh("./memfile_1st.dat", inst_mem_RAM);
+    $readmemh("memfile_1st.dat", inst_mem_RAM);
   end
 
 endmodule

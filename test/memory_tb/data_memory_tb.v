@@ -5,7 +5,6 @@ module data_memory_tb ();
 
   //--Inputs--------------------------
   reg         clk;
-  reg         reset;
   reg         write;
   reg [31:0]  address;
   reg [31:0]  write_data;
@@ -20,7 +19,6 @@ module data_memory_tb ();
   // initialize control_unit_TOP module
   data_memory data_memroy_inst (
     .clk            (clk)
-    .reset          (reset)
     .write          (write)
     .address        (address)
     .write_data     (write_data)
@@ -52,9 +50,6 @@ module data_memory_tb ();
 
   initial begin
     clk = 1'b0;
-    reset = 1'b1;
-    #10
-    reset = 1'b0;
     write = 1'b0;
     address = 32'd12;
     #10

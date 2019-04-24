@@ -14,32 +14,28 @@
 
 module data_memory (
   input wire          clk,
-  input wire          reset,
   input wire          write,
   input wire [31:0]   address,
   input wire [31:0]   write_data,
   output wire [31:0]  read_data
   );
 
-// Declare Wires used in this Module
-reg [31:0] data_mem_RAM[63:0];      // declare 2-d data_mem_RAM array
+  // Declare Wires used in this Module
+  reg [31:0] data_mem_RAM[63:0];      // declare 2-d data_mem_RAM array
+  reg [31:0] i;
 
-genvar i;
-generate
-  if (reset == 1'b1) begin
-    for (i = 0; i < 64; i = i + 1) begin
+  assign read_data = data_mem_RAM[address[31:2]];   // Reading the data with word aligned
+
+  initial begin
+    for (i = 0; i < 64; i = i + 1)
       data_mem_RAM[i] = i;
+  end
+
+  always @ (posedge clk) begin
+    if (write == 1'b1) begin
+      data_mem_RAM[address[31:2]] <= write_data;
     end
   end
-endgenerate
-
-assign read_data = data_mem_RAM[address[31:2]];   // Reading the data with word aligned
-
-always @ (posedge clk) begin
-  if (write == 1'b1) begin
-    data_mem_RAM[address[31:2]] <= write_data;
-  end
-end
 
 endmodule // data_memory
 

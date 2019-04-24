@@ -6,7 +6,7 @@ module ALU_tb();
 //--Inputs--------------------------
 reg [31:0] In1;
 reg [31:0] In2;
-reg [3:0] Func;
+reg [3:0] ALU_Func;
 
 //--Output--------------------------
 wire [31:0] ALUout;
@@ -19,7 +19,7 @@ reg [31:0] ALUout_expected;
 ALU ALU_inst (
   .In1    (In1),
   .In2    (In2),
-  .Func   (Func),
+  .ALU_Func   (ALU_Func),
   .ALUout (ALUout)
   );
 
@@ -39,7 +39,7 @@ initial begin
   while(donesim !== 1'b1) begin
     @(negedge clk);
     if (ALUout != ALUout_expected) begin
-      $display("Error for Func: %d, In1: %d, In2: %d", Func, In1, In2);
+      $display("Error for ALU_Func: %d, In1: %d, In2: %d", ALU_Func, In1, In2);
       $display("ALUout_expected: %d, but ALU_out: %d", ALUout_expected, ALUout);
       $stop;
     end
@@ -50,44 +50,44 @@ initial begin
   donesim = 1'b0;
   In1 = 32'd0;
   In2 = 32'd0;
-  Func = 4'hX;
+  ALU_Func = 4'hX;
 
   // AND
   #10
-  Func = 4'b0000;
+  ALU_Func = 4'b0000;
   In1 = 32'd5;
   In2 = 32'd10;
   ALUout_expected = 32'd0;
 
   // OR
   #10
-  Func = 4'b0001;
+  ALU_Func = 4'b0001;
   ALUout_expected = 32'd15;
 
   // XOR
   #10
-  Func = 4'b0010;
+  ALU_Func = 4'b0010;
   In2 = 32'd11;
   ALUout_expected = 32'd14;
 
   // XNOR
   #10
-  Func = 4'b0011;
+  ALU_Func = 4'b0011;
   ALUout_expected = 32'hFFFFFFF1;     // ALUout_expected = -15
 
   // ADD
   #10
-  Func = 4'b0100;
+  ALU_Func = 4'b0100;
   ALUout_expected = 32'd16;
 
   // SUB
   #10
-  Func = 4'b1100;
+  ALU_Func = 4'b1100;
   ALUout_expected = 32'hFFFFFFFA;     // ALUout_expected = -6
 
   // SLT
   #10
-  Func = 4'b0101;
+  ALU_Func = 4'b0101;
   ALUout_expected= 32'd0;
 
   donesim = 1'b1;

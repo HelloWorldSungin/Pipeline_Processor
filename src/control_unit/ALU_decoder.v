@@ -1,6 +1,6 @@
 /*
   ALU_decoder convert control_unit_funct and ALU_mid input and decode the Itype and Rtype
-  instructions to correct Func selector for the ALU
+  instructions to correct ALU_Func selector for the ALU
   Inputs:
     control_unit_funct: 6 bits funct selector Rtype for ALU operation
     ALU_mid: 6 bits funct select Itype for ALU operation
@@ -10,10 +10,10 @@
 module ALU_decoder(
   input wire [5:0] control_unit_funct,
   input wire [2:0] ALU_mid,
-  output wire [3:0] Func
+  output wire [3:0] ALU_Func
   );
 
-  assign Func = (ALU_mid == 3'b000) ? 4'b0100 :                   // Itype:   addi, addiu
+  assign ALU_Func = (ALU_mid == 3'b000) ? 4'b0100 :                   // Itype:   addi, addiu
                 (ALU_mid == 3'b001) ? 4'b1100 :                   //          subi
                 (ALU_mid == 3'b010) ? 4'b0000 :                   //          andi
                 (ALU_mid == 3'b011) ? 4'b0001 :                   //          ori

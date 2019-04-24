@@ -150,7 +150,7 @@ data_path_TOP data_path_TOP_init (
   initial begin
     donesim <= 1'b0;
     reset   <= 1'b1;
-    #20;
+    #12;
     reset   <= 1'b0;
     pc      <= 32'b0;
     #10;

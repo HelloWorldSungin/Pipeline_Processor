@@ -106,8 +106,9 @@ initial begin
 end
 
 initial begin
-  clk = 0;
-  eq_ne = 0;
+  donesim = 1'b0;
+  clk = 1'b0;
+  eq_ne = 1'b0;
   op_code = 6'b000000; //R-Type
   control_unit_funct = 6'b000000;  //NOOP
   controller_output_expected = 18'b00xxxxx0x0xx000001;

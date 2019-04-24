@@ -63,6 +63,7 @@ initial begin
 end
 
 initial begin
+  donesim <= 1'b0;
   clk <= 1'b0;
   reset <= 1'b1;
   RD1_expected <= 32'd0;

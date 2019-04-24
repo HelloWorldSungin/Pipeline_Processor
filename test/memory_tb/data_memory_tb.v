@@ -18,10 +18,10 @@ module data_memory_tb ();
 
   // initialize control_unit_TOP module
   data_memory data_memroy_inst (
-    .clk            (clk)
-    .write          (write)
-    .address        (address)
-    .write_data     (write_data)
+    .clk            (clk),
+    .write          (write),
+    .address        (address),
+    .write_data     (write_data),
     .read_data      (read_data)
     );
 
@@ -63,7 +63,7 @@ module data_memory_tb ();
     address = 32'd20;
     #10
     read_data_expected = 32'd0;
-    #10
+    #10;
   end
 
 

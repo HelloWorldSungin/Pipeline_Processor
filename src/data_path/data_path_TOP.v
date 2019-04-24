@@ -9,8 +9,9 @@
 module data_path_TOP (
   input wire          clk,
   input wire          reset,
-  input wire [31:0]   instr_d,
-  input wire [31:0]   readdata_m,
+  input wire [31:0]   pc,
+  //input wire [31:0]   instr_d,
+  //input wire [31:0]   readdata_m,  input wire memread ..??
   input wire          start_mult,
   input wire          mult_sign,
   input wire [1:0]    pcsrc,
@@ -23,7 +24,6 @@ module data_path_TOP (
   input wire          memwrite_d,
   input wire          memtoreg_d,
   input wire          output_branch,
-  output wire [31:0]  pc,
   output wire         eq_ne,
   output wire [5:0]   op_code,
   output wire [5:0]   control_unit_funct
@@ -56,6 +56,9 @@ module data_path_TOP (
 	wire stall_f, stall_d, flush_e;
   wire [63:0] product;
   wire [4:0] rs_d, rt_d, rd_d;
+
+  wire [31:0] readdata_m      // commented out input
+  wire [31:0] instr_d         // commented out input
 
 
   // Assign Outputs
@@ -275,7 +278,7 @@ ALU ALU (
   .In1        (srca_e),
   .In2        (srcb_e),
   .ALU_Func   (aluctrl_e),
-  .ALUout     (aluout),
+  .ALUout     (aluout)
   );
 
 // ---------------------------------------------------------------------------

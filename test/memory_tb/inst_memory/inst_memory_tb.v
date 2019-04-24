@@ -48,19 +48,19 @@ inst_memory inst_memory_inst (
     read_data_expected = 32'h00A60820;
     #10
     address = 32'd4;
-    read_data_expected = 32'h02852822;
+    read_data_expected = 32'h21420002;
     #10
     address = 32'd8;
-    read_data_expected = 32'h02384826;
+    read_data_expected = 32'h21830001;
     #10
     address = 32'd12;
-    read_data_expected = 32'h3A6D0004;
+    read_data_expected = 32'h008A2020;
     #10
     address = 32'd16;
-    read_data_expected = 32'h2A310020;
+    read_data_expected = 32'h02852822;
     #10
     address = 32'd20;
-    read_data_expected = 32'h3C140001;
+    read_data_expected = 32'h03083023;
     #10;
     donesim = 1'b1;
   end

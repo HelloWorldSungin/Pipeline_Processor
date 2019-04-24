@@ -69,11 +69,10 @@ initial begin
   RD2_expected <= 32'd0;
   #10
   reset <= 1'b0;
-  #10
   write <= 1'b0;
   PR1 <= 5'd6;
   PR2 <= 5'd8;
-  @(negedge clk)
+  #10
   RD1_expected <= 32'd6;
   RD2_expected <= 32'd8;
   #10
@@ -95,8 +94,9 @@ initial begin
   write <= 1'b0;
   PR1 <= 5'd10;
   PR2 <= 5'd12;
-  RD1_expected = 32'd10;
-  RD2_expected = 32'd12;
+  @(negedge clk)
+  RD1_expected <= 32'd10;
+  RD2_expected <= 32'd12;
   #5
   //On the same clock cycle as above comment (Write <= 0), it writes rf_mem[20] to 1 on the raising edge
   write <= 1'b1;
@@ -106,7 +106,8 @@ initial begin
   // Read the rf_mem[5] we just wrote
   write <= 1'b0;
   PR1 <= 5'd1;
-  RD1_expected = 32'd20;
+  @(negedge clk)
+  RD1_expected <= 32'd20;
   #10;
   donesim <= 1'b1;
 end

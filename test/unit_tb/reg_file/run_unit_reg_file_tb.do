@@ -14,7 +14,7 @@ if {$argc == 1} {
   configure wave -valuecolwidth 75
 
   # Open saved waveform view
-  #do unit_tb_wave.do
+  do wave.do
 }
 
 # Ouput vsim.wlf file

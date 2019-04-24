@@ -1,7 +1,7 @@
 # Log the simulation results into the transcript
-transcript file run_memory_tb_transcript
+transcript file run_inst_memory_tb_transcript
 
-vsim data_memory_tb
+vsim inst_memory_tb
 
 radix hex
 

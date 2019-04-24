@@ -43,7 +43,7 @@ module reg_file(
       rf_mem[i] = i;
   end
 
-  always @ (posedge clk, posedge reset) begin
+  always @ (posedge clk or posedge reset) begin
     if (reset) begin
       // setting synchronnous reset at positive clk edge
       RD1_r <= 32'd0;

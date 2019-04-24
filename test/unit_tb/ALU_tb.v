@@ -73,7 +73,7 @@ initial begin
   // XNOR
   #10
   Func = 4'b0011;
-  ALUout_expected = 32'hFFFFFFF1;
+  ALUout_expected = 32'hFFFFFFF1;     // ALUout_expected = -15
 
   // ADD
   #10
@@ -83,7 +83,7 @@ initial begin
   // SUB
   #10
   Func = 4'b1100;
-  ALUout_expected = 32'hFFFFFFFA;
+  ALUout_expected = 32'hFFFFFFFA;     // ALUout_expected = -6
 
   // SLT
   #10

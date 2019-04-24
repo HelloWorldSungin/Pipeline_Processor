@@ -36,12 +36,12 @@ module data_memory_tb ();
     $display("done");
   end
 
-  // Checking controller_output against controller_output_expected
+  // Checking read_data against read_data_expected
   initial begin
     read_data_expected = read_data;
     while(donesim !== 1'b1) begin
       @(negedge clk);
-      if (controller_output != controller_output_expected) begin
+      if (read_data != read_data_expected) begin
         $display("Error for write: %b, address: %d, write_data: %d", write, address, write_data);
         $stop;
       end

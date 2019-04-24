@@ -103,11 +103,10 @@ initial begin
   write <= 1'b1;
   WD <= 32'd20;
   WR <= 5'd1;
-  #5
+  #10
   // Read the rf_mem[5] we just wrote
   write <= 1'b0;
   PR1 <= 5'd1;
-  #10
   @(negedge clk)
   RD1_expected <= 32'd20;
   #10;

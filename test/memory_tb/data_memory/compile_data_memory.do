@@ -17,4 +17,4 @@ vmap work rtl_work
 vlog -f data_memory_src.f
 
 # Compile all unit testbench and simulation-only Verilog files
-vlog -vlog01compat -f data_memroy_src_tb.f
+vlog -vlog01compat data_memory_tb.v

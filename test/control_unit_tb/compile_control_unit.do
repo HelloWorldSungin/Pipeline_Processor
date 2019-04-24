@@ -17,4 +17,4 @@ vmap work rtl_work
 vlog -f control_unit_src.f
 
 # Compile all unit testbench and simulation-only Verilog files
-vlog -vlog01compat -f control_unit_TOP_tb.v
+vlog -vlog01compat -f control_unit_src_tb.f

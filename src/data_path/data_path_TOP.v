@@ -9,7 +9,7 @@
 module data_path_TOP (
   input wire          clk,
   input wire          reset,
-  input wire [31:0]   pc,
+  //input wire [31:0]   pc,
   //input wire [31:0]   instr_d,
   //input wire [31:0]   readdata_m,  input wire memread ..??
   input wire          start_mult,
@@ -59,6 +59,7 @@ module data_path_TOP (
 
   wire [31:0] readdata_m;      // commented out input
   wire [31:0] instr_d;         // commented out input
+  wire [31:0] pc;              // commented out input
 
 
   // Assign Outputs

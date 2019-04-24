@@ -6,7 +6,7 @@ module data_path_TOP_tb();
 //--Inputs--------------------------
 reg          clk;
 reg          reset;
-reg [31:0]   pc;
+// reg [31:0]   pc;
 //reg [31:0]   instr_d;
 //reg [31:0]   readdata_m;
 reg          start_mult;
@@ -41,7 +41,7 @@ reg [5:0]    control_unit_funct_expected;
 data_path_TOP data_path_TOP_init (
   .clk                 (clk),
   .reset               (reset),
-  .pc                  (pc),
+  // .pc                  (pc),
   //.instr_d             (instr_d),
   //.readdata_m          (readdata_m),
   .start_mult          (start_mult),
@@ -83,7 +83,7 @@ data_path_TOP data_path_TOP_init (
         $display("Error for following inputs:");
         //$display("instr_d: %h", instr_d);
         //$display("readdata_m: %d", readdata_m);
-        $display("pc: %d", pc);
+        // $display("pc: %d", pc);
         $display("start_mult: %b", start_mult);
         $display("mult_sign: %b", mult_sign);
         $display("pcsrc: %b", pcsrc);
@@ -105,7 +105,7 @@ data_path_TOP data_path_TOP_init (
         $display("Error for following inputs:");
         //$display("instr_d: %h", instr_d);
         //$display("readdata_m: %d", readdata_m);
-        $display("pc: %d", pc);
+        // $display("pc: %d", pc);
         $display("start_mult: %b", start_mult);
         $display("mult_sign: %b", mult_sign);
         $display("pcsrc: %b", pcsrc);
@@ -127,7 +127,7 @@ data_path_TOP data_path_TOP_init (
         $display("Error for following inputs:");
         //$display("instr_d: %h", instr_d);
         //$display("readdata_m: %d", readdata_m);
-        $display("pc: %d", pc);
+        // $display("pc: %d", pc);
         $display("start_mult: %b", start_mult);
         $display("mult_sign: %b", mult_sign);
         $display("pcsrc: %b", pcsrc);
@@ -152,8 +152,7 @@ data_path_TOP data_path_TOP_init (
     reset   <= 1'b1;
     #12;
     reset   <= 1'b0;
-    pc      <= 32'b0;
-    #10;
+    #8;
     controller_simulator <= 17'b11001000000000000; // ADD
     {regwrite_d, regdst_d, alusrc_d, aluctrl_d, memwrite_d, memtoreg_d, se_ze, outselect_d, start_mult, mult_sign, output_branch, pcsrc} <= controller_simulator;
     #30;

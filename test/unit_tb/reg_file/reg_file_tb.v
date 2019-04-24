@@ -72,6 +72,7 @@ initial begin
   write <= 1'b0;
   PR1 <= 5'd6;
   PR2 <= 5'd8;
+  @negedge
   RD1_expected <= 32'd6;
   RD2_expected <= 32'd8;
   #10
@@ -92,6 +93,7 @@ initial begin
   write <= 1'b0;
   PR1 <= 5'd10;
   PR2 <= 5'd12;
+  @negedge
   RD1_expected <= 32'd10;
   RD2_expected <= 32'd12;
   #5
@@ -103,6 +105,7 @@ initial begin
   // Read the rf_mem[5] we just wrote
   write <= 1'b0;
   PR1 <= 5'd1;
+  @negedge
   RD1_expected <= 32'd20;
   #10;
   donesim <= 1'b1;

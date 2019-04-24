@@ -47,7 +47,7 @@ module execute_register (
   assign rd_e = rd_e_reg;
 
   always @ (posedge clk or posedge reset) begin
-    if (clk == 1'b1) begin
+    if (clr == 1'b1) begin
       ctrls_e_reg <= 11'd0;
     end else begin
       if (reset == 1'b1) begin
@@ -67,7 +67,7 @@ module execute_register (
         upperimm_e_reg <= upperimm_d;
         rs_e_reg <= rs_d;
         rt_e_reg <= rt_d;
-        rd_e_reg <= rd_d; 
+        rd_e_reg <= rd_d;
       end
     end
   end

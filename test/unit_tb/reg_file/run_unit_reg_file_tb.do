@@ -20,6 +20,8 @@ if {$argc == 1} {
 # Ouput vsim.wlf file
 # To view waveform, open modelsim, go to this test directory, and run:
 #    vsim -view vsim.wlf -do wave.do
-log -r /*
+if {$argc == 2} {
+  log -r /*
+}
 
 run -all

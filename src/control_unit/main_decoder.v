@@ -21,6 +21,7 @@
 */
 
 `default_nettype none
+
 module main_decoder (
     input wire [5:0] op_code,
     input wire [5:0] control_unit_funct,
@@ -79,10 +80,11 @@ assign controls = (op_code == 6'b000000) ? ((control_unit_funct == 6'b000000) ? 
                    (op_code == 6'b001111) ? 16'b10xxxx00000x0100 :              // LUI
                    (op_code == 6'b100011) ? 16'b1010000000010000 :              // LW
                    (op_code == 6'b101011) ? 16'b0x10001x00010000 :              // SW
-                                            16'bxxxxxxxxxxxxxxxx
+                                            16'bxxxxxxxxxxxxxxxx;
 
 
 
 
 endmodule
+
 `default_nettype wire

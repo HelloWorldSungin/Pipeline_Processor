@@ -61,12 +61,12 @@ assign {reg_write,    // 15
         mult_sign     // 0
         } = controls;
 
-assign controls = (op_code == 6'b000000) :((control_unit_funct == 6'b000000) ? 16'b00xxxx0x0000xx00 :        // NOOP
-                                           (control_unit_funct == 6'b010000) ? 16'b11xxxx0000001100 :        // MFHI
-                                           (control_unit_funct == 6'b010010) ? 16'b11xxxx0000001000 :        // MFLO
-                                           (control_unit_funct == 6'b011000) ? 16'b000xxx00000x1011 :        // MULT
-                                           (control_unit_funct == 6'b011001) ? 16'b110xxx00000x1010 :        // MULTU
-                                                                               16'b1101110000000000) :       // RType without MULT and MULTU
+assign controls = (op_code == 6'b000000) ? ((control_unit_funct == 6'b000000) ? 16'b00xxxx0x0000xx00 :        // NOOP
+                                            (control_unit_funct == 6'b010000) ? 16'b11xxxx0000001100 :        // MFHI
+                                            (control_unit_funct == 6'b010010) ? 16'b11xxxx0000001000 :        // MFLO
+                                            (control_unit_funct == 6'b011000) ? 16'b000xxx00000x1011 :        // MULT
+                                            (control_unit_funct == 6'b011001) ? 16'b110xxx00000x1010 :        // MULTU
+                                                                                16'b1101110000000000) :       // RType without MULT and MULTU
                   (op_code == 6'b000010) ? 16'b000xxx01001xxx00 :                          // JUMP
                   (op_code == 6'b000100) ? 16'b000xxx01100xxx00 :                          // BEQ
                   (op_code == 6'b000101) ? 16'b000xxx01010xxx00 :                          // BNE

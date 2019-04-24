@@ -43,6 +43,7 @@ module data_memory_tb ();
       @(negedge clk);
       if (read_data != read_data_expected) begin
         $display("Error for write: %b, address: %d, write_data: %d", write, address, write_data);
+        $display("read_data_expected: %d,   read_data: %d", read_data_expected, read_data);
         $stop;
       end
     end

@@ -62,6 +62,7 @@ inst_memory inst_memory_inst (
     address = 32'd20;
     read_data_expected = 32'h3C140001;
     #10;
+    donesim = 1'b1;
   end
 
 endmodule //inst_memory_tb

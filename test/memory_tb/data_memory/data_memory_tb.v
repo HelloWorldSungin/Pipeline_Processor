@@ -65,6 +65,7 @@ module data_memory_tb ();
     address = 32'd20;
     read_data_expected = 32'd0;
     #10;
+    donesim = 1'b1;
   end
 
 

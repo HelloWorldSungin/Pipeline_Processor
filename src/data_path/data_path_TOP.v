@@ -57,8 +57,8 @@ module data_path_TOP (
   wire [63:0] product;
   wire [4:0] rs_d, rt_d, rd_d;
 
-  wire [31:0] readdata_m      // commented out input
-  wire [31:0] instr_d         // commented out input
+  wire [31:0] readdata_m;      // commented out input
+  wire [31:0] instr_d;         // commented out input
 
 
   // Assign Outputs
@@ -210,7 +210,7 @@ assign eq_ne = (rd1out_d == rd2out_d) ? 1'b1 : 1'b0;
 assign signimm_d = { {16{instr_d[15]}}, instr_d[15:0]};
 
 // jump target address (jta)
-assign jump_offset = {6'b00_0000, instr_d[25:0]}, 2'b00};
+assign jump_offset = {{6'b00_0000, instr_d[25:0]}, 2'b00};
 assign pcjump_d = {instr_d[31:28], jump_offset};
 
 // upper-immediate value (lui)
@@ -239,7 +239,7 @@ execute_register execute_register (
   .rs_d         (rs_d),
   .rt_d         (rt_d),
   .rd_d         (rd_d),
-  .ctrls_e      (regwrite_e, memtoreg_e, memwrite_e, aluctrl_e, alusrc_e, regdst_e, outselect_e),
+  .ctrls_e      ({regwrite_e, memtoreg_e, memwrite_e, aluctrl_e, alusrc_e, regdst_e, outselect_e}),
   .rd1out_e     (rd1out_e),
   .rd2out_e     (rd2out_e),
   .imm_e        (imm_e),

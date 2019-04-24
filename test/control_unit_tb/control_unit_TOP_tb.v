@@ -200,7 +200,7 @@ initial begin
   controller_output_expected = 18'b101010000100000001;
   #10
   op_code = 6'b101011;    //SW
-  controller_output_expected = 18'b0x101001x100000001;
+  controller_output_expected = 18'b0x101001x100000000;
   #10;
 
   donesim = 1'b1;

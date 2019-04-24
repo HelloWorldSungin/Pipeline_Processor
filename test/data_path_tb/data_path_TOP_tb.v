@@ -6,7 +6,7 @@ module data_path_TOP_tb();
 //--Inputs--------------------------
 reg          clk;
 reg          reset;
-reg [31:0]   pc,
+reg [31:0]   pc;
 //reg [31:0]   instr_d;
 //reg [31:0]   readdata_m;
 reg          start_mult;
@@ -73,7 +73,6 @@ data_path_TOP data_path_TOP_init (
 
   // Checking outputs against the expected outputs
   initial begin
-    pc_expected = pc;
     eq_ne_expected = eq_ne;
     op_code_expected = op_code;
     control_unit_funct_expected = control_unit_funct;

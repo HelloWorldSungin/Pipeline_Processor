@@ -150,9 +150,9 @@ data_path_TOP data_path_TOP_init (
   initial begin
     donesim <= 1'b0;
     reset   <= 1'b1;
-    #12;
+    #10;
     reset   <= 1'b0;
-    #8;
+    #10;
     controller_simulator <= 17'b11001000000000000; // ADD
     {regwrite_d, regdst_d, alusrc_d, aluctrl_d, memwrite_d, memtoreg_d, se_ze, outselect_d, start_mult, mult_sign, output_branch, pcsrc} <= controller_simulator;
     #30;

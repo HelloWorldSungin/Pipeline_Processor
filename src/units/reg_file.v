@@ -55,10 +55,10 @@ module reg_file(
     end
   end
 
-  always @ (posedge clk) begin
+  always @ (negedge clk) begin
     if (write == 1'b1 && WR == 5'd0) begin
-      RD1_r <= (PR1 != 5'd0) ? rf_mem[PR1] : 5'd0;
-      RD2_r <= (PR2 != 5'd0) ? rf_mem[PR2] : 5'd0;
+      RD1_r <= (PR1 != 5'd0) ? rf_mem[PR1] : 32'd0;
+      RD2_r <= (PR2 != 5'd0) ? rf_mem[PR2] : 32'd0;
     end
   end
 

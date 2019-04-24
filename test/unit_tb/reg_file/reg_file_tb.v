@@ -69,6 +69,7 @@ initial begin
   RD2_expected <= 32'd0;
   #10
   reset <= 1'b0;
+  #10
   write <= 1'b0;
   PR1 <= 5'd6;
   PR2 <= 5'd8;

@@ -59,7 +59,7 @@ module data_memory_tb ();
     write_data = 32'd0;
     address = 32'd20;
     write = 1'b1;
-    read_data_expected = 32'b5;
+    read_data_expected = 32'd5;
     #10
     write = 1'b0;
     address = 32'd20;

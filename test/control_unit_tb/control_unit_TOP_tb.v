@@ -29,9 +29,9 @@ reg donesim;
 
 wire [17:0] controller_output;
 reg  [17:0] controller_output_expected;
-wire [3:0] ALU_Func_expected = controller_output_expected[11:14];
-wire [1:0] out_select_expected = controller_output_expected[6:7];
-wire [1:0] pc_source_expected = controller_output_expected[1:2];
+wire [3:0] ALU_Func_expected = {controller_output_expected[14], controller_output_expected[13], controller_output_expected[12], controller_output_expected[11]};
+wire [1:0] out_select_expected = {controller_output_expected[7], controller_output_expected[6]};
+wire [1:0] pc_source_expected = {controller_output_expected[2], controller_output_expected[1]};
 
 assign controller_output = {
                             reg_write,          // 17

@@ -165,10 +165,11 @@ initial begin
   eq_ne = 0;         //BEQ
   controller_output_expected = 18'b000xxxx01xxx000001;
   #20
-  eq_ne = 1;
+  eq_ne = 0;
   op_code = 6'b000101;    //BNE
   controller_output_expected = 18'b000xxxx01xxx000001;
   #20
+  eq_ne = 1;
   controller_output_expected = 18'b000xxxx01xxx001011;
   #20
   op_code = 6'b001000;    //ADDI

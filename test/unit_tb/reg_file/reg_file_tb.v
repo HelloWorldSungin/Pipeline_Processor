@@ -82,10 +82,10 @@ initial begin
   #10
   write <= 1'b0;
   PR1 <= 5'd4;    // Read data from rf_mem[4]
+  #10
   RD1_expected <= 32'd31; // check to see if the new data 32 is written at rf_mem[4]
   #20
   reset <= 1'b1;     // reset the RD1, and RD2 to 0
-  @(negedge clk)
   RD1_expected <= 32'd0;
   RD2_expected <= 32'd0;
   #7.5

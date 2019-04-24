@@ -208,8 +208,11 @@ assign eq_ne = (rd1out_d == rd2out_d) ? 1'b1 : 1'b0;
 // ---------------------------------------------------------------------------
 // - Calculate Branch Target address
 // ---------------------------------------------------------------------------
-// signext_16_32
-assign signimm_d = { {16{instr_d[15]}}, instr_d[15:0]};
+
+// branch target address
+assign signimm_d = { {16{instr_d[15]}}, instr_d[15:0]};   // signext_16_32
+assign branch_offset = {signimm_d[29:0], 2'b00};
+assign pcbranch_d = branch_offset + pcplus4_d;
 
 // jump target address (jta)
 assign jump_offset = {{6'b00_0000, instr_d[25:0]}, 2'b00};

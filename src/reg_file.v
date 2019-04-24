@@ -13,12 +13,12 @@ module reg_file (
 		rf[i] = i;
 	end
 
-	always @ (posedge Clk, posedge Reset) begin  
+	always @ (posedge Clk, posedge Reset) begin
 		if(Reset) begin         //setting synchronnous reset at positive clk edge
 			RD1 <= 0;
 			RD2 <= 0;
 		end
-		else if(Write & ~Reset)  //write to the memory if write = 1, Reset = 0, and on a raising edge of the clock
+		else if(Write)  //write to the memory if write = 1, Reset = 0, and on a raising edge of the clock
 			rf[WR] <= WD;
 		end
 
@@ -30,4 +30,3 @@ module reg_file (
 	end
 
 endmodule
-

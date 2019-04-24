@@ -22,22 +22,22 @@ module data_memory (
   );
 
 // Declare Wires used in this Module
-reg [31:0] RAM [63:0];      // declare 2-d RAM array
+reg [31:0] data_mem_RAM [63:0];      // declare 2-d data_mem_RAM array
 
 genvar i;
 generate
   if (reset == 1'b1) begin
     for (i = 0; i < 64; i = i + 1) begin
-      RAM[i] = i;
+      data_mem_RAM[i] = i;
     end
   end
 endgenerate
 
-assign read_data = RAM[address[31:2]]   // Reading the data with word aligned
+assign read_data = data_mem_RAM[address[31:2]]   // Reading the data with word aligned
 
 always @ (posedge clk) begin
   if (write == 1'b1) begin
-    RAM[address[31:2]] <= write_data;
+    data_mem_RAM[address[31:2]] <= write_data;
   end
 end
 

@@ -51,7 +51,7 @@ module hazard_unit (
 		memtoreg_m &
 		(writereg_m == rs_d | writereg_m == rt_d));
 
-	assign #1 stall_d = lwstall_d | branchstall_d | multstall;
+	assign #1 stall_d = lwstall_d | branchstall_d; //| multstall;
 	assign #19 stall_f = stall_d;
 	assign #20 flush_e = stall_f;
 

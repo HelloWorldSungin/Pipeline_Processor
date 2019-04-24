@@ -253,8 +253,98 @@ execute_register execute_register (
 // ---------------------------------------------------------------------------
 // - srca mux
 // ---------------------------------------------------------------------------
+assign srca_e = forwarda_e[1] ? aluout_m :
+                forwarda_e[0] ? result_w : rd1out_e;
+
+// ---------------------------------------------------------------------------
+// - wde mux
+// ---------------------------------------------------------------------------
+assign writedata_e = forwardb_e[1] ? aluout_m :
+                     forwardb_e[0] ? result_w : rd2out_e;
 
 
+// ---------------------------------------------------------------------------
+// - srcb mux
+// ---------------------------------------------------------------------------
+assign srcb_e = alusrc_e ? imm_e : writedata_e;
+
+// ---------------------------------------------------------------------------
+// - ALU
+// ---------------------------------------------------------------------------
+ALU ALU (
+  .In1        (srca_e),
+  .In2        (srcb_e),
+  .ALU_Func   (aluctrl_e),
+  .ALUout     (aluout),
+  );
+
+// ---------------------------------------------------------------------------
+// - mainout mux: this determines what the aluout_e will be
+// ---------------------------------------------------------------------------
+assign aluout_e = (outselect_e == 2'b00) ? aluout :
+                  (outselect_e == 2'b01) ? upperimm_e :
+                  (outselect_e == 2'b10) ? mult_lo : mult_hi;
+
+// ---------------------------------------------------------------------------
+// - write_register mux
+// ---------------------------------------------------------------------------
+assign writereg_e = (regdst_e == 1'b1) ? rd_e : rt_e;
+
+// ---------------------------------------------------------------------------
+// - memory_register
+// ---------------------------------------------------------------------------
+memory_register memory_register(
+  .clk            (clk),
+  .reset          (reset),
+  .ctrls_e        ({regwrite_e, memtoreg_e, memwrite_e}),
+  .aluout_e       (aluout_e),
+  .writedata_e    (writedata_e),
+  .writereg_e     (writereg_e),
+  .ctrls_m        ({regwrite_m, memtoreg_m, memwrite_m}),
+  .aluout_m       (aluout_m),
+  .writedata_m    (writedata_m),
+  .writereg_m     (writereg_m)
+  );
+
+// ***************************************************************************
+// * Memory Stage
+// ***************************************************************************
+
+// ---------------------------------------------------------------------------
+// - data memory
+// ---------------------------------------------------------------------------
+data_memory data_memory (
+  .clk          (clk),
+  .write        (memwrite_m),
+  .address      (aluout_m),
+  .write_data   (writedata_m),
+  .read_data    (readdata_m)
+  );
+
+// ---------------------------------------------------------------------------
+// - writeback_register
+// ---------------------------------------------------------------------------
+writeback_register writeback_register (
+  .clk           (clk),
+  .reset         (reset),
+  .ctrls_m       ({regwrite_m, memtoreg_m}),
+  .readdata_m    (readdata_m),
+  .aluout_m      (aluout_m),
+  .writereg_m    (writereg_m),
+  .ctrls_w       ({regwrite_w, memtoreg_w}),
+  .readdata_w    (readdata_w),
+  .aluout_w      (aluout_w),
+  .writereg_w    (writereg_w)
+  );
+
+// ***************************************************************************
+// * Write-back Stage
+// ***************************************************************************
+
+// ---------------------------------------------------------------------------
+// - final_result mux
+// ---------------------------------------------------------------------------
+assign result_w = (memtoreg_w == 1'b1) ? readdata_w : aluout_w;
 
 endmodule // data_path_TOP
 

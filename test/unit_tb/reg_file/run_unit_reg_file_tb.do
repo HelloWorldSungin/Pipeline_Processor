@@ -1,7 +1,7 @@
 # Log the simulation results into the transcript
-transcript file run_unit_ALU_tb_msim_transcript
+transcript file run_unit_reg_file_tb_msim_transcript
 
-vsim ALU_tb
+vsim reg_file_tb
 
 radix hex
 

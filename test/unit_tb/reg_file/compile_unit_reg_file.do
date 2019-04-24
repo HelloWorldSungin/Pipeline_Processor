@@ -1,5 +1,5 @@
 # Start new transcript file
-transcript file compile_reg_file_msim_transcript
+transcript file compile_unit_reg_file_msim_transcript
 
 # Kill off any exisiting simulation window
 quit -sim -sim

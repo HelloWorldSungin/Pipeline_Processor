@@ -6,7 +6,7 @@
 
 module MIPS_PIPELINE_TOP (
   input wire clk,
-  input wire reset,
+  input wire reset
   );
 
   // Declare Wires used in this Module

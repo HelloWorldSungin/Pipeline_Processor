@@ -4,7 +4,7 @@ module inst_memory_tb ();
 
 //--Inputs--------------------------
 reg [31:0] address;
-
+reg reset;
 //--Output--------------------------
 wire [31:0] read_data;
 
@@ -15,6 +15,7 @@ reg [31:0] read_data_expected;
 
 // initialize control_unit_TOP module
 inst_memory inst_memory_inst (
+    .reset      (reset),
     .address    (address),
     .read_data  (read_data)
   );
@@ -45,6 +46,8 @@ inst_memory inst_memory_inst (
   initial begin
     donesim = 1'b0;
     clk = 1'b0;
+    reset = 1'b1;
+    #10
     address = 32'd0;
     read_data_expected = 32'h00A60820;
     #10

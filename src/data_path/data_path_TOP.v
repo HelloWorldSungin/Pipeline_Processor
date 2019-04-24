@@ -147,6 +147,7 @@ module data_path_TOP (
  // - inst_memory
  // ---------------------------------------------------------------------------
  inst_memory inst_memory (
+    .reset      (reset),
     .address    (pc),
     .read_data  (readdata_f)
    );

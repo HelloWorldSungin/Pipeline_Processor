@@ -62,4 +62,6 @@ module reg_file(
     end
   end
 
+endmodule
+
 `default_nettype wire

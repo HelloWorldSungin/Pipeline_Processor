@@ -119,10 +119,10 @@ initial begin
   controller_output_expected = 18'b110010000000000001;
   #10
   control_unit_funct = 6'b100010;  //SUB
-  controller_output_expected = 18'b110100000000000001;
+  controller_output_expected = 18'b110110000000000001;
   #10
   control_unit_funct = 6'b100011;  //SUBU
-  controller_output_expected = 18'b110100000000000001;
+  controller_output_expected = 18'b110110000000000001;
   #10
   control_unit_funct = 6'b100100;  //AND
   controller_output_expected = 18'b110000000000000001;

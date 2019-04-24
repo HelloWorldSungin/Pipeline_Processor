@@ -103,7 +103,7 @@ initial begin
   write <= 1'b1;
   WD <= 32'd20;
   WR <= 5'd1;
-  #10
+  #5
   // Read the rf_mem[5] we just wrote
   write <= 1'b0;
   PR1 <= 5'd1;

@@ -14,7 +14,7 @@ vlib rtl_work
 vmap work rtl_work
 
 # Compile all unit source files
-vlog ..//..//..//src//units//reg_file.v
+vlog ../../../src/units/reg_file.v
 
 # Compile all unit testbench and simulation-only Verilog files
 vlog -vlog01compat reg_file_tb.v

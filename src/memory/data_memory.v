@@ -33,7 +33,7 @@ generate
   end
 endgenerate
 
-assign read_data = data_mem_RAM[address[31:2]]   // Reading the data with word aligned
+assign read_data = data_mem_RAM[address[31:2]];   // Reading the data with word aligned
 
 always @ (posedge clk) begin
   if (write == 1'b1) begin

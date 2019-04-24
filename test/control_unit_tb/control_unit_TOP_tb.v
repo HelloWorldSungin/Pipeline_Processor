@@ -87,15 +87,15 @@ initial begin
       $display("reg_write_expected: %b, reg_write: %b", controller_output_expected[17], controller_output[17]);
       $display("reg_dst_expected: %b, reg_dst: %b", controller_output_expected[16], controller_output[16]);
       $display("ALUSrc_A_expected: %b, ALUSrc_A: %b", controller_output_expected[15], controller_output[15]);
-      $display("ALU_Func_expected: 0x%0b, ALU_Func: 0x%0b", controller_output_expected[11:14], controller_output[11:14]);
+      $display("ALU_Func_expected: 0x%0h, ALU_Func: 0x%0h", controller_output_expected[11:14], controller_output[11:14]);
       $display("mem_write_expected: %b, mem_write: %b", controller_output_expected[10], controller_output[10]);
       $display("mem_to_reg_expected: %b, mem_to_reg: %b", controller_output_expected[9], controller_output[9]);
       $display("se_ze_expected: %b, se_ze: %b", controller_output_expected[8], controller_output[8]);
-      $display("out_select_expected: 0x%0b, out_select: 0x%0b", controller_output_expected[6:7], controller_output[6:7]);
+      $display("out_select_expected: 0x%0h, out_select: 0x%0h", controller_output_expected[6:7], controller_output[6:7]);
       $display("start_mult_expected: %b, start_mult: %b", controller_output_expected[5], controller_output[5]);
       $display("mult_sign_expected: %b, mult_sign: %b", controller_output_expected[4], controller_output[4]);
       $display("output_branch_expected: %b, output_branch: %b", controller_output_expected[3], controller_output[3]);
-      $display("pc_source_expected: 0x%0b, pc_source: 0x%0b", controller_output_expected[1:2], controller_output[1:2]);
+      $display("pc_source_expected: 0x%0h, pc_source: 0x%0h", controller_output_expected[1:2], controller_output[1:2]);
       $display("mem_read_expected: %b, mem_read: %b", controller_output_expected[0], controller_output[0]);
       $stop;
     end

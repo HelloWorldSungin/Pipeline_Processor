@@ -22,7 +22,7 @@ module data_memory (
   );
 
 // Declare Wires used in this Module
-reg [31:0] data_mem_RAM [63:0];      // declare 2-d data_mem_RAM array
+reg [31:0] data_mem_RAM[63:0];      // declare 2-d data_mem_RAM array
 
 genvar i;
 generate

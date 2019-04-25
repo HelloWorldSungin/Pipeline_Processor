@@ -66,7 +66,7 @@ initial begin
   PR2 <= 5'd0;
   RD1_expected <= 32'd0;
   RD2_expected <= 32'd0;
-  #20
+  #10
   write <= 1'b0;
   PR1 <= 5'd6;
   PR2 <= 5'd8;

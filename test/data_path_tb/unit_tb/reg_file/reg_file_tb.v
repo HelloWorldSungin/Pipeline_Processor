@@ -66,12 +66,11 @@ initial begin
   PR2 <= 5'd0;
   RD1_expected <= 32'd0;
   RD2_expected <= 32'd0;
-  #10
+  #20
   write <= 1'b0;
   PR1 <= 5'd6;
   PR2 <= 5'd8;
   #10
-  @(negedge clk)
   RD1_expected <= 32'd6;
   RD2_expected <= 32'd8;
   #10

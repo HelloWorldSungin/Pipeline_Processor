@@ -26,6 +26,7 @@ wire          output_branch;
 wire         eq_ne;
 wire [5:0]   op_code;
 wire [5:0]   control_unit_funct;
+wire [31:0]  result_w;
 
 
 // Declare local regs and wires
@@ -72,7 +73,8 @@ data_path_TOP data_path_TOP_init (
   .output_branch       (output_branch),
   .eq_ne               (eq_ne),
   .op_code             (op_code),
-  .control_unit_funct  (control_unit_funct)
+  .control_unit_funct  (control_unit_funct),
+  .result_w            (result_w)
   );
 
   // Simulate clk

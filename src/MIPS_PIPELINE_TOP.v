@@ -5,8 +5,9 @@
 `default_nettype none
 
 module MIPS_PIPELINE_TOP (
-  input wire clk,
-  input wire reset
+  input wire          clk,
+  input wire          reset,
+  output wire [31:0]  result_w
   );
 
   // Declare Wires used in this Module
@@ -59,7 +60,8 @@ module MIPS_PIPELINE_TOP (
       .output_branch       (output_branch_ctrl),
       .eq_ne               (eq_ne_dp),
       .op_code             (op_code_dp),
-      .control_unit_funct  (control_unit_funct_dp)
+      .control_unit_funct  (control_unit_funct_dp),
+      .result_w            (result_w)
       );
 
 endmodule // MIPS_PIPELINE_TOP

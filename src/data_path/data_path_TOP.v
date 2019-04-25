@@ -26,7 +26,8 @@ module data_path_TOP (
   input wire          output_branch,
   output wire         eq_ne,
   output wire [5:0]   op_code,
-  output wire [5:0]   control_unit_funct
+  output wire [5:0]   control_unit_funct,
+  output wire [31:0]  result_w
   );
 
   // Declare Wires used in this Module
@@ -48,7 +49,6 @@ module data_path_TOP (
 	wire [31:0] srca_e, srcb_e;
 	wire [31:0] writedata_e, writedata_m;
 	wire [31:0] aluout, aluout_e, aluout_m, aluout_w;
-	wire [31:0] result_w;
 	wire [4:0] writereg_e, writereg_m, writereg_w;
 	wire [31:0] readdata_w;
 	wire forwarda_d, forwardb_d;

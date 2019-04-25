@@ -1,0 +1,44 @@
+# Find the dot product of these two vectors:
+### V1 = [  28, 110,  -41,  23, -67]
+### V2 = [-240,  91, -101, 150,  88]
+### for loop through vector elements
+
+# MIPS Implementation
+main:
+	lui  $1 0x1234		# $1 = 0x12340000 (&V1)
+	lui  $2 0xABCD		# $2 = 0xABCD0000 (&V2)
+	addi $3, $0, 0		# $3 = sum
+	addi $4, $0, 1		# $4 = index
+	addi $5, $0, 5		# $5 = vector size
+loop:
+	slt  $6, $4, $5		# if ($4 < 5) $6 = 1,
+						## else $6 = 0
+	beq  $6, $0, done	# if ($6 == 0) branch
+	sll  $6, $4, 2		# $4 = index << 2
+	add  $7, $6, $1		# $7 = &V1[index]
+	lw   $8, 0($7)		# $8 = V1[index]
+	add  $7, $6, $2		# $7 = &V2[index]
+	lw   $9, 0($7)		# $9 = V2[index]
+	mult $8, $9			# $LO = $8 * $9
+	mflo $7				# $7 = $LO
+	add  $3, $3, $7		# $3 += $7
+	j    loop
+done:
+
+# Hexadecimal input file for testing
+main:
+	3C011234	LUI $at 0x1234
+	3C02ABCD	3C02ABCD
+	20600000	ADDI $zero $v1 0x0000
+	20800001	ADDI $zero $a0 0x0001
+	20050005	ADDI $a1 $zero 0x0005
+loop:
+	0085302A	SLT $a2 $a0 $a1
+	10C7000A	beq  $a2, $a3, 0x000A
+	00C13820	add $a3 $a2 $at
+	8CE90000	lw $t1 0x0000 $a3
+	01090018	mult $t0 $t1
+	00003812	MFLO $a3
+	00671820	add $v1 $v1 $a3
+	0BFFFFF6	j 0xfffffff6
+done:

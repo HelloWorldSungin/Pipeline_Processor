@@ -18,6 +18,7 @@ reg [31:0] result_w_expected;
 MIPS_PIPELINE_TOP MIPS_PIPELINE_TOP_init (
   .clk      (clk),
   .reset    (reset)
+  .result_w (result_w)
   );
 
   // Simulate clk

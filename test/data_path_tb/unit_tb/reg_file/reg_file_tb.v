@@ -80,10 +80,7 @@ initial begin
   write <= 1'b0;
   PR1 <= 5'd4;    // Read data from rf_mem[4]
   RD1_expected <= 32'd31; // check to see if the new data 32 is written at rf_mem[4]
-  #20
-  RD1_expected <= 32'd0;
-  RD2_expected <= 32'd0;
-  #10;
+  #10
   donesim <= 1'b1;
 end
 

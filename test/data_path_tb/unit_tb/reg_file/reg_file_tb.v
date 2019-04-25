@@ -79,30 +79,10 @@ initial begin
   #10
   write <= 1'b0;
   PR1 <= 5'd4;    // Read data from rf_mem[4]
-  #10
   RD1_expected <= 32'd31; // check to see if the new data 32 is written at rf_mem[4]
   #20
   RD1_expected <= 32'd0;
   RD2_expected <= 32'd0;
-  #7.5
-  //On the same clock cycle, it reads rf_mem[10] data, which is 10 and rf_mem[12], which is 12 on falling edge
-  write <= 1'b0;
-  PR1 <= 5'd10;
-  PR2 <= 5'd12;
-  @(negedge clk)
-  RD1_expected <= 32'd10;
-  RD2_expected <= 32'd12;
-  #2.5
-  //On the same clock cycle as above comment (Write <= 0), it writes rf_mem[20] to 1 on the raising edge
-  write <= 1'b1;
-  WD <= 32'd20;
-  WR <= 5'd1;
-  #5
-  // Read the rf_mem[5] we just wrote
-  write <= 1'b0;
-  PR1 <= 5'd1;
-  @(negedge clk)
-  RD1_expected <= 32'd20;
   #10;
   donesim <= 1'b1;
 end

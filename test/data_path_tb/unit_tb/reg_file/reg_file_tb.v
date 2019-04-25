@@ -50,12 +50,12 @@ initial begin
     if (RD1 != RD1_expected) begin
       $display("Error for write: %d, PR1: %d, PR2: %d, WR: %d, WD: %d", write, PR1, PR2, WR, WD);
       $display("RD1_expected: %d, but RD1: %d", RD1_expected, RD1);
-      $stop;
+      //$stop;
     end
     if (RD2 != RD2_expected) begin
       $display("Error for write: %d, PR1: %d, PR2: %d, WR: %d, WD: %d", write, PR1, PR2, WR, WD);
       $display("RD2_expected: %d, but RD2: %d", RD2_expected, RD2);
-      $stop;
+      //$stop;
     end
   end
 end

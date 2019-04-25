@@ -62,7 +62,6 @@ end
 
 initial begin
   donesim <= 1'b0;
-  clk <= 1'b0;
   PR1 <= 5'd0;
   PR2 <= 5'd0;
   RD1_expected <= 32'd0;
@@ -72,6 +71,7 @@ initial begin
   PR1 <= 5'd6;
   PR2 <= 5'd8;
   #10
+  @(negedge clk)
   RD1_expected <= 32'd6;
   RD2_expected <= 32'd8;
   #10

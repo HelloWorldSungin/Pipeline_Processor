@@ -180,7 +180,6 @@ module data_path_TOP (
 // ---------------------------------------------------------------------------
 reg_file reg_file (
     .clk      (clk),
-    .reset    (reset),
     .write    (regwrite_w),
     .PR1      (rs_d),
     .PR2      (rt_d),

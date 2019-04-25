@@ -5,7 +5,6 @@ module reg_file_tb();
 
 //--Inputs--------------------------
 reg         clk;
-reg         reset;
 reg         write;
 reg [4:0]   PR1;
 reg [4:0]   PR2;
@@ -24,7 +23,6 @@ reg [31:0]  RD2_expected;
 // initialize control_unit_TOP module
 reg_file reg_file_inst (
     .clk       (clk),
-    .reset     (reset),
     .write     (write),
     .PR1       (PR1),
     .PR2       (PR2),
@@ -65,11 +63,11 @@ end
 initial begin
   donesim <= 1'b0;
   clk <= 1'b0;
-  reset <= 1'b1;
+  PR1 <= 5'd0;
+  PR2 <= 5'd0;
   RD1_expected <= 32'd0;
   RD2_expected <= 32'd0;
   #10
-  reset <= 1'b0;
   write <= 1'b0;
   PR1 <= 5'd6;
   PR2 <= 5'd8;
@@ -86,12 +84,10 @@ initial begin
   #10
   RD1_expected <= 32'd31; // check to see if the new data 32 is written at rf_mem[4]
   #20
-  reset <= 1'b1;     // reset the RD1, and RD2 to 0
   RD1_expected <= 32'd0;
   RD2_expected <= 32'd0;
   #7.5
   //On the same clock cycle, it reads rf_mem[10] data, which is 10 and rf_mem[12], which is 12 on falling edge
-  reset <= 1'b0;
   write <= 1'b0;
   PR1 <= 5'd10;
   PR2 <= 5'd12;

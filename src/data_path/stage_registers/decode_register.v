@@ -31,6 +31,9 @@ module decode_register (
       if (enable == 1'b1) begin
         instr_d_reg <= instr_f;
         pc_plus4_d_reg <= pc_plus4_f;
+      end else begin
+        instr_d_reg <= instr_d_reg;
+        pc_plus4_d_reg <= pc_plus4_d_reg;
       end
     end
   end

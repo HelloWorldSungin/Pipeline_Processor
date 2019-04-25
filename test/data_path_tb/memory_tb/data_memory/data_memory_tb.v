@@ -51,7 +51,6 @@ module data_memory_tb ();
 
   initial begin
     donesim = 1'b0;
-    clk = 1'b0;
     write = 1'b0;
     address = 32'd12;
     #10

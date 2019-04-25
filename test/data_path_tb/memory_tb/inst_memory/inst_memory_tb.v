@@ -45,9 +45,9 @@ inst_memory inst_memory_inst (
 
   initial begin
     donesim = 1'b0;
-    clk = 1'b0;
-    reset = 1'b1;
+    reset = 1'b1; 
     #10
+    reset = 1'b0;
     address = 32'd0;
     read_data_expected = 32'h00A60820;
     #10
